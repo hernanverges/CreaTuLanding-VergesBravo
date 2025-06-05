@@ -7,52 +7,104 @@ nav {
     background-color: #fff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 100vw;
-}
-
-.logo-container{
+  }
+  
+  .logo-container {
     padding-left: 2rem;
-}
-
-.logo{
+  }
+  
+  .logo {
     font-size: 2rem;
-}
-
-.navbar-list{
+  }
+  
+  .navbar-list {
     display: flex;
     list-style: none;
+    align-items: center;
+    gap: 1rem;
     cursor: pointer;
-}
+  }
+  
 
-.navbar-item{
+  .navbar-list > li > a,
+  .navbar-list > li > span {
+    all: unset;
+    display: block;
     padding: 1rem;
-}
-
-.navbar-item:hover {
+    cursor: pointer;
+    border-radius: 60px;
+    transition: background-color 0.2s, color 0.2s;
+  }
+  
+  .navbar-list > li > a:hover,
+  .navbar-list > li > span:hover {
     color: #001F3F;
-    background-color: #f0f0f0; 
-    border-radius: 20px; 
+    background-color: #f0f0f0;
   }
 
-  .cartwidget-container{
+  
+  .dropdown {
+    position: relative;
+  }
+  
+  .dropdown span {
+    display: block;
+  }
+  
+  .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    background-color: #fff;
+    list-style: none;
+    padding: 0.5rem 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    z-index: 999;
+    min-width: 200px;
+  }
+  
+  .dropdown:hover .dropdown-menu {
+    display: block;
+  }
+  
+  .dropdown-menu li a {
+    all: unset;
+    display: block;
+    padding: 0.75rem 1rem;
+    width: 100%;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+  }
+  
+  .dropdown-menu li a:hover {
+    background-color: none;
+    color: #001F3F;
+    border-radius: 0; 
+  }
+  
+  .cartwidget-container {
     padding-right: 2rem;
   }
-
-
-
+  
 
   @media (max-width: 550px) {
-
-    nav{
-        justify-content: center;
-        flex-direction: column;
+    nav {
+      justify-content: center;
+      flex-direction: column;
     }
-
-    .logo-container{
-        padding-left: 0rem;
+  
+    .logo-container {
+      padding-left: 0rem;
     }
-
-    .cartwidget-container{
-        padding-right: 0rem;
+  
+    .cartwidget-container {
+      padding-right: 0rem;
     }
-
+  
+    .navbar-list {
+      flex-direction: column;
+      gap: 0;
+    }
   }
+  
