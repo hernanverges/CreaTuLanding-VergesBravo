@@ -1,5 +1,6 @@
 import { useAppContext } from '../../context/context';
-import './Cart.css'; 
+import './Cart.css';
+import { Link } from 'react-router';
 
 export default function Cart() {
   const { cart, cleanCart } = useAppContext();
@@ -27,6 +28,9 @@ export default function Cart() {
             ))}
           </ul>
           <p className="cart-total">Total: ${total}</p>
+            <Link to={`/confirmpurchase`}>
+                <button className='clean-button'>Finalizar compra</button>
+            </Link>
           <button className="clean-button" onClick={cleanCart}>
             Vaciar carrito
           </button>
