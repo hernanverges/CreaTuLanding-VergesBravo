@@ -1,0 +1,47 @@
+.purchase-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background-color: #fff;
+  padding: 2rem;
+  margin: 2rem auto;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+}
+
+.purchase-form input {
+  padding: 0.8rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+}
+
+.purchase-form input:focus {
+  outline: none;
+  border-color: #6a5acd;
+}
+
+.purchase-form button {
+  padding: 0.9rem 1rem;
+  background-color: #6a5acd;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.purchase-form button:hover {
+  background-color: #5a4dcf;
+}
+
+.purchase-form p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: red;
+  text-align: center;
+}

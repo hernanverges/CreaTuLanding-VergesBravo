@@ -1,8 +1,12 @@
+/* eslint-disable no-unused-vars */
 import './ItemListContainer.css';
 import Item from '../Item/Item.jsx';
-import getProducts from '../../../services/mockService.js';
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router';
+import { Link, useParams } from 'react-router';
+import { db } from '../../firebaseConfig.jsx';
+import { collection, getDocs } from 'firebase/firestore';
+import { HiShoppingCart } from "react-icons/hi2";
+
 
 function ItemListContainer({ greetings }){
 
@@ -10,8 +14,12 @@ function ItemListContainer({ greetings }){
   const [products, setProducts]=useState([]);
   const [loading, setLoading]=useState(false);
 
+  const productsCollection = getDocs(collection(db,'products'));
+
   const {category} = useParams();
 
+
+  //filtros//
   const filterProducts = (products, category) => {
     if (category){
       setProducts(products.filter(el => el.category === category));
@@ -19,16 +27,20 @@ function ItemListContainer({ greetings }){
       setProducts(products);
     }
   }
+  //fin filtros//
 
 
   useEffect( () => {
   if (allProducts.length === 0){
+
     setLoading(true);
-  getProducts().then( (result) => {
-    setAllProducts(result);
-    filterProducts(result, category);
-    setLoading(false);
-  }).catch((err) => {alert(err)});
+    productsCollection.then(snapshot => {
+      const productsArray = snapshot.docs.map(el => el.data());
+      setAllProducts(productsArray);
+      filterProducts(productsArray, category);
+      setLoading(false);
+    })
+    .catch(err => console.error(err));
 } else{
 filterProducts(allProducts, category);
 }
@@ -45,11 +57,20 @@ filterProducts(allProducts, category);
     products.length > 0 ?
     products.map(elem => <Item
       key={ elem.id }
-      {... elem} />)
+      {... elem}
+ />
+)
+
       :
       <p>No se encontraron productos.</p>
     }
     </div>
+    <Link to={`/confirmpurchase`}>
+    <button className='finish-button'>Finalizar compra</button>
+    </Link>
+    <Link to={`/cart`}>
+    <button className='finish-button'>Ir al carrito <HiShoppingCart /></button>
+    </Link>
     </div>
   )
 }

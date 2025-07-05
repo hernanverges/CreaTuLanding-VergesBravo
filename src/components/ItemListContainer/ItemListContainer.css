@@ -35,6 +35,26 @@ h2{
     animation: prixClipFix 2s infinite linear;
   }
 
+  .finish-button {
+  background-color: #000; 
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  margin: 2rem;
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin-top: 1rem;
+}
+
+.finish-button:hover {
+  background-color: #5a4dcf; 
+  transform: scale(1.03);
+}
+
   @keyframes prixClipFix {
       0%   {clip-path:polygon(50% 50%,0 0,0 0,0 0,0 0,0 0)}
       25%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 0,100% 0,100% 0)}
@@ -42,3 +62,4 @@ h2{
       75%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,0 100%,0 100%)}
       100% {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,0 100%,0 0)}
   }
+
